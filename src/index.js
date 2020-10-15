@@ -1,20 +1,27 @@
-/*
-* Accessing the Process Object
-*/
+/**
+ * Simple program that makes Cat and Dog fight. 
+ * 
+ * Purpose of this program is to illustrate how to import and export modules in node.js
+ */
 
-let initalMemory = process.memoryUsage().heapUsed;
-let word = process.argv[2];
+ const Dog = require("./dog.js");
+ const Cat = require("./cat.js");
 
-console.log(`\n\nYour word is ${word}`);
 
-//Create a new array
-const wordArray = [];
+ const fight = (dog, cat) => {
+     let winner = dog.name;
+     if (cat.clawStrength > dog.toothStrength) {
+         winner = cat.name;
+     }
+    else if (cat.clawStrength === dog.toothStrength) {
+        winner = "Nobody";
+    }
 
-// Loop 1000 times, pushing the same intem into the the array each time
-for (let i = 0; i < 1000; i++) {
-    wordArray.push(`${word} count: ${i}`);
-}
+    console.log(`${winner} wins!`);
+ }
 
-console.log(`Starting memory usage:\t ${initalMemory}.\n
-Current memory usage: ${process.memoryUsage().heapUsed}.\n\n
-After using the loop to add elements to the array, the process is using ${process.memoryUsage().heapUsed - initalMemory} more bytes of memory`);
+
+ const myDog = new Dog('Danny', Math.random());
+ const myCat = new Cat('Tabby', Math.random());
+
+ fight(myDog, myCat);
