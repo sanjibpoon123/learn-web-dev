@@ -1,27 +1,15 @@
 /**
- * Simple program that makes Cat and Dog fight. 
- * 
- * Purpose of this program is to illustrate how to import and export modules in node.js
+ * Shows how to use 'events', a core node module.
  */
 
- const Dog = require("./dog.js");
- const Cat = require("./cat.js");
+ // Here we require in the 'events' module and save a reference to it in an events variable
+ const events = require('events');
 
-
- const fight = (dog, cat) => {
-     let winner = dog.name;
-     if (cat.clawStrength > dog.toothStrength) {
-         winner = cat.name;
-     }
-    else if (cat.clawStrength === dog.toothStrength) {
-        winner = "Nobody";
-    }
-
-    console.log(`${winner} wins!`);
+ // silly listener callback
+ const celebrateListener = (specialOccassion) => {
+     console.log("Let's celebrate " + specialOccassion)
  }
 
-
- const myDog = new Dog('Danny', Math.random());
- const myCat = new Cat('Tabby', Math.random());
-
- fight(myDog, myCat);
+ const myEmitter = new events.EventEmitter();
+ myEmitter.on('celebration', celebrateListener);
+ myEmitter.emit('celebration', 'Diwali');
