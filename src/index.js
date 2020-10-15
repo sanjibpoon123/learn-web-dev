@@ -1,20 +1,15 @@
-/*
-* Accessing the Process Object
-*/
+/**
+ * Shows how to use 'events', a core node module.
+ */
 
-let initalMemory = process.memoryUsage().heapUsed;
-let word = process.argv[2];
+ // Here we require in the 'events' module and save a reference to it in an events variable
+ const events = require('events');
 
-console.log(`\n\nYour word is ${word}`);
+ // silly listener callback
+ const celebrateListener = (specialOccassion) => {
+     console.log("Let's celebrate " + specialOccassion)
+ }
 
-//Create a new array
-const wordArray = [];
-
-// Loop 1000 times, pushing the same intem into the the array each time
-for (let i = 0; i < 1000; i++) {
-    wordArray.push(`${word} count: ${i}`);
-}
-
-console.log(`Starting memory usage:\t ${initalMemory}.\n
-Current memory usage: ${process.memoryUsage().heapUsed}.\n\n
-After using the loop to add elements to the array, the process is using ${process.memoryUsage().heapUsed - initalMemory} more bytes of memory`);
+ const myEmitter = new events.EventEmitter();
+ myEmitter.on('celebration', celebrateListener);
+ myEmitter.emit('celebration', 'Diwali');
