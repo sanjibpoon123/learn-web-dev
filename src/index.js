@@ -1,15 +1,10 @@
-/**
- * Shows how to use 'events', a core node module.
- */
+const testNumber = require('./game');
 
- // Here we require in the 'events' module and save a reference to it in an events variable
- const events = require('events');
+process.stdout.write("I'm thinking of a number from 1 through 10. What do you think it is? \n('q' to quit) \n\nIs the number: ...")
 
- // silly listener callback
- const celebrateListener = (specialOccassion) => {
-     console.log("Let's celebrate " + specialOccassion)
- }
+const playGame = (userInput) => {
+    let input = userInput.toString().trim();
+    testNumber(input);
+}
 
- const myEmitter = new events.EventEmitter();
- myEmitter.on('celebration', celebrateListener);
- myEmitter.emit('celebration', 'Diwali');
+process.stdin.on('data', playGame);
