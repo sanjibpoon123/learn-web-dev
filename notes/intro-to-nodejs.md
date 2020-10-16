@@ -1,4 +1,4 @@
-# Node.js
+# Node.js Fundamentals
 
 ## 1. Introduction
 
