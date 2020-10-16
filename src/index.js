@@ -1,10 +1,18 @@
-const testNumber = require('./game');
+// Use fs.readFile() to figure out the secret word and assign
+// that value to the secretWord variable
+const fs = require('fs');
 
-process.stdout.write("I'm thinking of a number from 1 through 10. What do you think it is? \n('q' to quit) \n\nIs the number: ...")
+let secretWord = null;
 
-const playGame = (userInput) => {
-    let input = userInput.toString().trim();
-    testNumber(input);
-}
+let readDataCallback = (err, data) => {
+    if (err) {
+        console.log(`Something went wrong: ${err}`);
+    } else {
+        console.log(`Provided file contained: ${data}`);
+    }
+};
 
-process.stdin.on('data', playGame);
+fs.readFile('finalFile.txt', 'utf-8', readDataCallback);
+
+// Above code is executed before we find the value of secretWord
+secretWord = "cheeseburgerpizzabagels";
