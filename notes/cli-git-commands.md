@@ -71,7 +71,7 @@ Commands            |        Description
 `git commit -a`         |
 `git checkout master`                 | go back to master branch
 `git merge linux-work`                | merge changesets from linux-work (Git >= 1.5)
-`git pull . linux-work`               |merge changesets from linux-work (all Git versions)
+`git pull . linux-work`               | merge changesets from linux-work (all Git versions)
 `git branch -m <oldname> <newname>`   | rename branch
 `git branch -m <newname>`             | rename current branch
 
