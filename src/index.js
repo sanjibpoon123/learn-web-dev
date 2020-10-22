@@ -1,18 +1,23 @@
-// Use fs.readFile() to figure out the secret word and assign
-// that value to the secretWord variable
-const fs = require('fs');
+const {checkInventory, processPayment, shipOrder} = require('./library');
 
-let secretWord = null;
+const order = {
+    items: [
+        ['sunglasses', 1], ['bags', 2]
+    ],
+    giftcardBalance: 390.82,
+}
 
-let readDataCallback = (err, data) => {
-    if (err) {
-        console.log(`Something went wrong: ${err}`);
-    } else {
-        console.log(`Provided file contained: ${data}`);
-    }
-};
+checkInventory(order)
+    .then((resolvedValueArray) => {
+        return processPayment(resolvedValueArray);
+    })
+    .then((resolvedValueArray) => {
+        return shipOrder(resolvedValueArray);
+    })
+    .then((successMessage) => {
+        console.log(successMessage);
+    })
+    .catch((errorMessage) => {
+        console.log(errorMessage);
+    });
 
-fs.readFile('finalFile.txt', 'utf-8', readDataCallback);
-
-// Above code is executed before we find the value of secretWord
-secretWord = "cheeseburgerpizzabagels";
