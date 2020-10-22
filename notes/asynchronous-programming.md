@@ -349,7 +349,7 @@ myPromises
 
 * To take advantage of concurrency, we can use `Promise.all()`.
 
---------------------------------------;
+-----------------------------------------------------------------------------
 
 ## Async Await
 
