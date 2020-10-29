@@ -49,7 +49,7 @@ POST http://www.myrestaurant.com/dishes/
 
 Body -
 
-```json
+```javascript
 {
   "dish": {
     "name": “Avocado Toast”,
@@ -66,7 +66,7 @@ Status Code - 201 (CREATED)
 
 Body -
 
-```json
+```javascript
 {
   "dish": {
     "id": 1223,
@@ -94,7 +94,7 @@ Response: Status Code - 200 (OK)
 
 Body -
 
-```json
+```javascript
 {
   "dishes": [
     {
@@ -132,7 +132,7 @@ GET http://www.myrestaurant.com/dishes/1223
 
 Response: Status Code - 200 (OK) Body -
 
-```json
+```javascript
 {
   "id": 1223,
   "name": “Avocado Toast”,
@@ -160,7 +160,7 @@ PUT http://www.myrestaurant.com/dishes/1223
 
 Body -
 
-```json
+```javascript
 {
   "dish": {
     "name": “Avocado Toast”,
@@ -199,7 +199,7 @@ Calling DELETE on a resource that does not exist should not change the state of 
 
 The functions to Create, Read, Update, and Delete resources are fundamental components of a usable storage model. You have now seen a couple of examples for how the CRUD paradigm can help us design systems. Now, try to use CRUD to list out routes for a new example model. Imagine we are trying to design a system that keeps track of workout classes, including the name of each class, who teaches it, and the duration of the class. An example `class` object would look like:
 
-```
+```javascript
 {
   "class": {
     "id": 1    
