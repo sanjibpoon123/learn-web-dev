@@ -45,14 +45,10 @@ In the last exercise, we saw that the `college` table contains duplicated data. 
 
 For example, suppose that a faculty member named Professor `'Hill'` changes their email address to `'hill@college.edu'` and asks you to update the school database accordingly. Since multiple students may have Professor Hill as an advisor, you’ll need to update her email address in multiple rows of the table. To do this, your first instinct might be something like:
 
-```
-
-
+```sql
 UPDATE college
 SET advisor_email = 'hill@college.edu'
 WHERE advisor_name = 'Hill';
-
-
 ```
 
 Unfortunately, this could cause problems if there are multiple professors with the same name. For example, suppose we run the code above, then query the table for all rows where `advisor_name = 'Hill'` and observe the following result:
@@ -119,7 +115,7 @@ First, we saw that every student with the same advisor has identical information
 
 To create a new table from an existing one, we can precede any query with `CREATE TABLE new_table_name AS`. For example, the following code selects the unique values of `major_1` and `major_1_credits_reqd` from the original `college` table and inserts them into a newly created table called `majors`:
 
-```
+```sql
 CREATE TABLE majors AS
 SELECT distinct major_1, major_1_credits_reqd
 FROM college;
@@ -127,7 +123,7 @@ FROM college;
 
 We can also delete columns from our original table once we have moved them. For example, the following code drops the columns `major_1` and `major_1_credits_reqd` from the college table:
 
-```
+```sql
 ALTER TABLE college
 DROP COLUMN major_1, 
 DROP COLUMN major_1_credits_reqd;
@@ -216,7 +212,7 @@ In the four-table schema, we’ll also want to implement some constraints that w
 
 In this exercise, we’ll create the four-table version of this schema using `CREATE TABLE` statements (instead of by extracting, deleting, and renaming columns from the original `college` table). Remember that the following syntax can be used to create a pair of related tables with primary and foreign key constraints. The first line creates a `customers` table with `id` as the primary key; the second creates an `orders` table with `order_id` as the primary key and `customer_id` as a foreign key referencing the `id` column in the `customers` table:
 
-```
+```sql
 CREATE TABLE customers (
   id serial PRIMARY KEY,
   name text,
@@ -245,14 +241,10 @@ For example, suppose that we’ve now fully redesigned our original database to 
 
 If we want to know how many students are advised by faculty in each department, we’ll have to join the `students` and `advisors` tables back together. To do this, we can select from both tables where the `advisor_id` column from the `students` table equals the `id` column from the `advisors` table. The following query will do the trick:
 
-```
-
-
+```sql
 SELECT students.id as student_id, department as advisor_department
 FROM students, advisors
 WHERE students.advisor_id = advisors.id;
-
-
 ```
 
 This gives us a table with student ids matched to advisor departments. The first few rows might look like this:
@@ -267,7 +259,7 @@ This gives us a table with student ids matched to advisor departments. The first
 
 Next, we can alter this query slightly to count the number of students with advisors in each department. We can accomplish this using `COUNT` and `GROUP BY` as follows:
 
-```
+```sql
 SELECT COUNT(students.id), advisors.department as advisor_department
 FROM students, advisors
 WHERE students.advisor_id = advisors.id
