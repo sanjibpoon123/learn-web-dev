@@ -60,7 +60,7 @@ describe('Phrase', () => {
 
 If we ran this test we would get the following error message in the terminal:
 
-![](https://content.codecademy.com/courses/learn-tdd-testing-models/getting-into-the-red-I.png)
+<img src="https://content.codecademy.com/courses/learn-tdd-testing-models/getting-into-the-red-I.png" width="500" />
 
 #### Step 3: The test fails (yea!)
 
@@ -76,7 +76,7 @@ The red error messages describe the failures of our implementation code, so we c
 
 Let’s look at the error message from our `Phrase.initials()` example in the last exercise:
 
-![](https://content.codecademy.com/courses/learn-tdd-testing-models/getting-into-the-red-I.png)
+<img src="https://content.codecademy.com/courses/learn-tdd-testing-models/getting-into-the-red-I.png" width="500" />
 
 The error tells us that `Phrase is not defined`. This is because we have not created an object named `Phrase` yet. Let’s do that now:
 
@@ -89,7 +89,7 @@ const Phrase = {}
 
 When we run our test again the error would look like this:
 
-![](https://content.codecademy.com/courses/learn-tdd-testing-models/red-to-green-I-1.png)
+<img src="https://content.codecademy.com/courses/learn-tdd-testing-models/red-to-green-I-1.png" width="500" />
 
 We’re still in the red, but we have a new error. The error says that `Phrase.initials` is not a function. That’s because we haven’t added an `.initials` method to the `Phrase` object. Let’s do that now:
 
@@ -104,7 +104,7 @@ const Phrase = {
 
 Now when we run our test we get the following error:
 
-![](https://content.codecademy.com/courses/learn-tdd-testing-models/red-to-green-I-2.png)
+<img src="https://content.codecademy.com/courses/learn-tdd-testing-models/red-to-green-I-2.png" width="500"/>
 
 This is the first error that is referencing the actual behavior of the `.initials` method.
 
@@ -247,7 +247,7 @@ Now that we have tests that cover more than one condition, it is time to program
 
 Let’s think about the current state of `Phrase.initials()`. We have one passing test and one failing test that raises the following error when you run the test suite:
 
-![](https://content.codecademy.com/courses/learn-tdd-testing-models/red-to-green-II-1.png)
+<img src="https://content.codecademy.com/courses/learn-tdd-testing-models/red-to-green-II-1.png" width="500"/>
 
 This is not surprising, considering our current implementation always returns ‘NM.’
 
